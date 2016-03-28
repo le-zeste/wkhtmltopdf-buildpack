@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-
+set -e
 if hash wkhtmltopdf 2>/dev/null; then
-
-    set -e
-
+    echo "-----> wkhtmltopdf already installed"
+else
     BUILD_DIR=$1
     BIN_PATH="$1/bin"
     TMP_PATH="$1/tmp"
@@ -32,9 +31,5 @@ if hash wkhtmltopdf 2>/dev/null; then
     echo "-----> Setting path"
     mkdir -p $BUILD_DIR/.profile.d
     echo "export PATH=\$HOME/bin:\$PATH" > $BUILD_DIR/.profile.d/wkhtmltopdf-boot.sh
-
-else
-    echo "-----> wkhtmltopdf already installed"
 fi
-
 exit 0
